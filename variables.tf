@@ -84,6 +84,12 @@ variable "gcp_public_cidrs_access_enabled" {
   default     = null
 }
 
+variable "enable_multi_networking" {
+  description = "Enable multi-networking for the GKE cluster."
+  type        = bool
+  default     = false
+}
+
 variable "enable_vertical_pod_autoscaling" {
   type        = bool
   description = "Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it"
