@@ -32,6 +32,7 @@ resource "google_container_cluster" "primary" {
   cluster_ipv4_cidr   = var.cluster_ipv4_cidr
   network             = "projects/${local.network_project_id}/global/networks/${var.network}"
   deletion_protection = var.deletion_protection
+  enable_multi_networking = var.enable_multi_networking
 
   dynamic "network_policy" {
     for_each = local.cluster_network_policy
