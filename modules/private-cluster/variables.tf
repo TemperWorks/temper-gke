@@ -889,3 +889,22 @@ variable "fleet_project" {
   type        = string
   default     = null
 }
+
+variable "additional_node_network_configs" {
+  description = "List of additional network configurations for node pools."
+  type = list(object({
+    network    = string
+    subnetwork = string
+  }))
+  default = []
+}
+
+variable "additional_pod_network_configs" {
+  description = "List of additional network configurations for pod networks."
+  type = list(object({
+    subnetwork         = string
+    secondary_pod_range = string
+    max_pods_per_node  = number
+  }))
+  default = []
+}
