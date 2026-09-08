@@ -1108,3 +1108,25 @@ variable "network_tier_config" {
     error_message = "Network tier allowed values are only NETWORK_TIER_DEFAULT, NETWORK_TIER_STANDARD or NETWORK_TIER_PREMIUM"
   }
 }
+
+# Temper: not yet upstreamed (no PR filed yet). Only wired up in
+# modules/private-cluster - see additional_pod_network_configs /
+# additional_node_network_configs in autogen/main/cluster.tf.tmpl.
+variable "additional_node_network_configs" {
+  description = "List of additional network configurations for node pools."
+  type = list(object({
+    network    = string
+    subnetwork = string
+  }))
+  default = []
+}
+
+variable "additional_pod_network_configs" {
+  description = "List of additional network configurations for pod networks."
+  type = list(object({
+    subnetwork          = string
+    secondary_pod_range = string
+    max_pods_per_node   = number
+  }))
+  default = []
+}

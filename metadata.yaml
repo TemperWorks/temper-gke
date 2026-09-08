@@ -811,6 +811,23 @@ spec:
       - name: network_tier_config
         description: Network tier configuration for the cluster
         varType: string
+      - name: additional_node_network_configs
+        description: List of additional network configurations for node pools.
+        varType: |-
+          list(object({
+              network    = string
+              subnetwork = string
+            }))
+        defaultValue: []
+      - name: additional_pod_network_configs
+        description: List of additional network configurations for pod networks.
+        varType: |-
+          list(object({
+              subnetwork          = string
+              secondary_pod_range = string
+              max_pods_per_node   = number
+            }))
+        defaultValue: []
     outputs:
       - name: ca_certificate
         description: Cluster ca certificate (base64 encoded)

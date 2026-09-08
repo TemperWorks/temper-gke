@@ -147,6 +147,8 @@ Then perform the following commands on the root folder:
 | add\_shadow\_firewall\_rules | Create GKE shadow firewall (the same as default firewall rules with firewall logs enabled). | `bool` | `false` | no |
 | additional\_ip\_range\_pods | List of _names_ of the additional secondary subnet ip ranges to use for pods | `list(string)` | `[]` | no |
 | additional\_ip\_ranges\_config | the configuration for individual additional subnetworks attached to the cluster | `list(object({ subnetwork = string, pod_ipv4_range_names = list(string) }))` | `[]` | no |
+| additional\_node\_network\_configs | List of additional network configurations for node pools. | <pre>list(object({<br>    network    = string<br>    subnetwork = string<br>  }))</pre> | `[]` | no |
+| additional\_pod\_network\_configs | List of additional network configurations for pod networks. | <pre>list(object({<br>    subnetwork          = string<br>    secondary_pod_range = string<br>    max_pods_per_node   = number<br>  }))</pre> | `[]` | no |
 | additive\_vpc\_scope\_dns\_domain | This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work cluster\_dns = `CLOUD_DNS` and cluster\_dns\_scope = `CLUSTER_SCOPE` must both be set as well. | `string` | `""` | no |
 | anonymous\_authentication\_config\_mode | Allows users to restrict or enable anonymous access to the cluster. Valid values are `ENABLED` and `LIMITED`. | `string` | `null` | no |
 | authenticator\_security\_group | The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format gke-security-groups@yourdomain.com | `string` | `null` | no |

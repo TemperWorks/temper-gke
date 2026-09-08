@@ -790,6 +790,7 @@ resource "google_container_node_pool" "pools" {
       pod_range            = lookup(network_config.value, "pod_range", null)
       enable_private_nodes = lookup(network_config.value, "enable_private_nodes", var.enable_private_nodes)
 
+      # Temper: not yet upstreamed, see https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/issues (no PR filed yet)
       dynamic "additional_pod_network_configs" {
         for_each = var.additional_pod_network_configs
         content {

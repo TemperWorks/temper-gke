@@ -43,6 +43,12 @@ spec:
         additional_ip_ranges_config:
           name: additional_ip_ranges_config
           title: Additional Ip Ranges Config
+        additional_node_network_configs:
+          name: additional_node_network_configs
+          title: Additional Node Network Configs
+        additional_pod_network_configs:
+          name: additional_pod_network_configs
+          title: Additional Pod Network Configs
         additional_pod_ranges_config:
           name: additional_pod_ranges_config
           title: Additional Pod Ranges Config

@@ -1109,10 +1109,9 @@ variable "network_tier_config" {
   }
 }
 
-# --- Temper: not yet upstreamed (enable_multi_networking is native as of this
-# version; these two additional_*_network_configs blocks on the node-pool
-# network_config are still Temper-only, see TemperWorks/temper-gke fork) ---
-
+# Temper: not yet upstreamed (no PR filed yet). Only wired up in
+# modules/private-cluster - see additional_pod_network_configs /
+# additional_node_network_configs in autogen/main/cluster.tf.tmpl.
 variable "additional_node_network_configs" {
   description = "List of additional network configurations for node pools."
   type = list(object({
