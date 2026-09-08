@@ -790,6 +790,22 @@ resource "google_container_node_pool" "pools" {
       pod_range            = lookup(network_config.value, "pod_range", null)
       enable_private_nodes = lookup(network_config.value, "enable_private_nodes", var.enable_private_nodes)
 
+      dynamic "additional_pod_network_configs" {
+        for_each = var.additional_pod_network_configs
+        content {
+          subnetwork          = additional_pod_network_configs.value.subnetwork
+          secondary_pod_range = additional_pod_network_configs.value.secondary_pod_range
+          max_pods_per_node   = additional_pod_network_configs.value.max_pods_per_node
+        }
+      }
+      dynamic "additional_node_network_configs" {
+        for_each = var.additional_node_network_configs
+        content {
+          network    = additional_node_network_configs.value.network
+          subnetwork = additional_node_network_configs.value.subnetwork
+        }
+      }
+
       dynamic "network_performance_config" {
         for_each = lookup(network_config.value, "total_egress_bandwidth_tier", "") != "" ? [1] : []
         content {
